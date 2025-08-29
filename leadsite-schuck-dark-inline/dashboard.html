@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Schuck &amp; Martins • Dashboard</title>
+  <link rel="icon" href="assets/favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container head-inner">
+      <a class="brand" href="index.html" aria-label="Schuck &amp; Martins">
+  <svg width="180" height="44" viewBox="0 0 180 44" role="img" aria-label="Schuck &amp; Martins" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="smGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#6ee7b7"/>
+        <stop offset="100%" stop-color="#60a5fa"/>
+      </linearGradient>
+    </defs>
+    <circle cx="22" cy="22" r="10" fill="url(#smGrad)"/>
+    <text x="40" y="27" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
+          font-size="16" font-weight="700" fill="#ffffff">Schuck &amp; Martins</text>
+  </svg>
+</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu">☰</button>
+      <nav id="nav" class="nav" hidden>
+        <a href="index.html">Board</a>
+        <a href="leads.html">Tabela</a>
+        <a class="active" href="dashboard.html">Dashboard</a>
+        <a href="reports.html">Relatórios</a>
+        <a href="README.html">Ajuda</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <h1>Dashboard</h1>
+      <div class="filters">
+        <label>De <input type="date" id="fromDate"></label>
+        <label>Até <input type="date" id="toDate"></label>
+        <select id="ownerFilter"><option value="">Responsável (todos)</option></select>
+        <button id="applyBtn" class="btn">Aplicar</button>
+      </div>
+
+      <div class="kpis">
+        <div class="kpi"><div class="title">Leads (período)</div><div class="value" id="kpiTotal">—</div></div>
+        <div class="kpi"><div class="title">Convertidos</div><div class="value" id="kpiWon">—</div></div>
+        <div class="kpi"><div class="title">Taxa de conversão</div><div class="value" id="kpiRate">—</div></div>
+        <div class="kpi"><div class="title">Pend. (próx. ação vencida)</div><div class="value" id="kpiOverdue">—</div></div>
+      </div>
+
+      <div class="grid" style="display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px">
+        <div class="chart-card"><canvas id="chartStatus"></canvas></div>
+        <div class="chart-card"><canvas id="chartOrigin"></canvas></div>
+        <div class="chart-card"><canvas id="chartByMonth"></canvas></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container"><p>© <span id=\"year\"></span> Schuck &amp; Martins</p></div>
+  </footer>
+
+  <script src="config.example.js"></script>
+  <script src="utils.js"></script>
+  <script src="api.js"></script>
+  <script src="dashboard.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

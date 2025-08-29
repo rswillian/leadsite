@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Schuck &amp; Martins • Tabela</title>
+  <link rel="icon" href="assets/favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container head-inner">
+      <a class="brand" href="index.html" aria-label="Schuck &amp; Martins">
+  <svg width="180" height="44" viewBox="0 0 180 44" role="img" aria-label="Schuck &amp; Martins" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="smGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#6ee7b7"/>
+        <stop offset="100%" stop-color="#60a5fa"/>
+      </linearGradient>
+    </defs>
+    <circle cx="22" cy="22" r="10" fill="url(#smGrad)"/>
+    <text x="40" y="27" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
+          font-size="16" font-weight="700" fill="#ffffff">Schuck &amp; Martins</text>
+  </svg>
+</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu">☰</button>
+      <nav id="nav" class="nav" hidden>
+        <a href="index.html">Board</a>
+        <a class="active" href="leads.html">Tabela</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="reports.html">Relatórios</a>
+        <a href="README.html">Ajuda</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <h1>Leads (Tabela)</h1>
+      <div class="filters">
+        <input id="searchInput" placeholder="Buscar por empresa, contato, email...">
+        <select id="statusFilter">
+          <option value="">Todos status</option>
+          <option>1º contato/captação</option>
+          <option>evolução de contato</option>
+          <option>aguardando retorno</option>
+          <option>conversão (ganho)</option>
+        </select>
+        <button id="refreshBtn" class="btn">Atualizar</button>
+        <button id="exportBtn" class="btn">Exportar CSV</button>
+      </div>
+      <div class="table-wrap">
+        <table id="leadsTable" class="table">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container"><p>© <span id=\"year\"></span> Schuck &amp; Martins</p></div>
+  </footer>
+
+  <script src="config.example.js"></script>
+  <script src="utils.js"></script>
+  <script src="api.js"></script>
+  <script src="table.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
