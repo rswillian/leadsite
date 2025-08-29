@@ -129,13 +129,24 @@
       "Data última interação": payload.data_ultima_interacao, "Próxima ação (data)": payload.proxima_acao,
       "Responsável": payload.responsavel, "Valor estimado": payload.valor_estimado, "Observações": payload.observacoes
     };
-    if(payload.id){
-      await API.update({ id: payload.id, ...map });
-    } else {
-      await API.create(map);
+
+    try {
+      if (!window.APP_CONFIG || !window.APP_CONFIG.SCRIPT_URL) {
+        throw new Error("Config ausente: defina SCRIPT_URL em config.js");
+      }
+      if (payload.id) {
+        await API.update({ id: payload.id, ...map });
+      } else {
+        await API.create(map);
+      }
+      modal.close();
+      await load();
+    } catch (err) {
+      console.error(err);
+      const msg = document.getElementById('modalMsg');
+      if (msg) msg.textContent = "Erro ao salvar: " + (err.message || err);
+      alert("Erro ao salvar: " + (err.message || err)); // opcional, ajuda a ver o erro
     }
-    modal.close();
-    await load();
   });
 
   addBtn.onclick = ()=> openModal(null);

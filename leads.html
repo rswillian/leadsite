@@ -62,7 +62,12 @@
     <div class="container"><p>© <span id=\"year\"></span> Schuck &amp; Martins</p></div>
   </footer>
 
-  <script src="config.example.js"></script>
+  <script src="config.js"></script>
+  <script>
+  if (!window.APP_CONFIG || !window.APP_CONFIG.SCRIPT_URL) {
+    alert('Defina window.APP_CONFIG.SCRIPT_URL em config.js (URL do Apps Script /exec).');
+  }
+</script>
   <script src="utils.js"></script>
   <script src="api.js"></script>
   <script src="table.js"></script>
